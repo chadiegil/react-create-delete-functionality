@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 function Form() {
   const [lastname, setLastname] = useState("");
@@ -51,7 +53,18 @@ function Form() {
     },
   ]);
 
-  let history = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = (id) => {
+    setShow(true);
+    // visitors.splice(index, 1);
+    // console.log("delete btn");
+    console.log(index);
+    history("/");
+  };
+
+  const history = useNavigate();
 
   const addVisitor = () => {
     const newPeople = {
@@ -66,6 +79,7 @@ function Form() {
   };
 
   const handleDelete = (id) => {
+    //getting the index of the visitor
     let index = visitors
       .map(function (e) {
         return e.id;
@@ -73,9 +87,11 @@ function Form() {
       .indexOf(id);
 
     visitors.splice(index, 1);
+    console.log(index);
     console.log("delete btn");
     history("/");
   };
+  const handleEdit = (id) => {};
 
   return (
     <div className="container m-4 p-2 d-flex justify-content-between">
@@ -140,6 +156,7 @@ function Form() {
               <th scope="col">Firstname</th>
               <th scope="col">Purpose</th>
               <th scope="col">Date</th>
+              <th scope="col">Edit</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
@@ -153,15 +170,15 @@ function Form() {
                   <td>{visitor.date}</td>
                   <td>
                     <button
+                      className="btn btn-sm bg-info m-1 w-100 text-white"
+                      onClick={() => handleEdit(visitor.id)}
+                    >
+                      edit
+                    </button>
+                  </td>
+                  <td>
+                    <button
                       className="btn btn-sm bg-danger m-1 w-100 text-white"
-                      // onClick={(id) => {
-                      //   const newVisitor = visitors.filter(function (visitor) {
-                      //     return visitor.id != index;
-                      //   });
-                      //   console.log("this is the id -> " + id);
-                      //   console.log(newVisitor);
-                      //   setVisitors(newVisitor);
-                      // }}
                       onClick={() => handleDelete(visitor.id)}
                     >
                       delete

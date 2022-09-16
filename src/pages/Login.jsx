@@ -6,7 +6,6 @@ function Login({ setIsLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLogin(true);
-    alert("You are login!");
     history("/");
   };
 
@@ -17,11 +16,21 @@ function Login({ setIsLogin }) {
           <h1 className="text-center">Login</h1>
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" name="username" className="input-group" />
+            <input
+              type="text"
+              name="username"
+              className="input-group"
+              placeholder="admin"
+            />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="text" name="password" className="input-group" />
+            <input
+              type="password"
+              name="password"
+              className="input-group"
+              placeholder="admin"
+            />
           </div>
           <div className="form-group">
             <button

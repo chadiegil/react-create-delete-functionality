@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import Errorpage from "./pages/Errorpage";
+import Edit from "./pages/Edit";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -30,7 +31,9 @@ function App() {
           {name}
         </Link>
         {isLogin ? (
-          <button onClick={logout}>Logout</button>
+          <button className=".button-88" onClick={logout}>
+            Logout
+          </button>
         ) : (
           <Link to="/login" className="h2 text-white">
             Login
@@ -40,9 +43,9 @@ function App() {
 
       <Routes>
         {isLogin && <Route path="/" element={<Home />} />}
-
         <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
         <Route path="/logout" element={<Logout setIsLogin={setIsLogin} />} />
+        <Route path="/edit" element={<Edit setIsLogin={setIsLogin} />} />
       </Routes>
     </>
   );
