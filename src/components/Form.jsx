@@ -2,56 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CgTrash } from "react-icons/cg";
 import { BsPencilSquare } from "react-icons/bs";
+import { data } from "../data";
 
 function Form() {
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [purpose, setPurpose] = useState("");
   const [date, setDate] = useState("");
-  const [visitors, setVisitors] = useState([
-    {
-      id: 1,
-      lastname: "Smith",
-      firstname: "Doe",
-      purpose: "Payment",
-      date: "10-20-29",
-    },
-    {
-      id: 2,
-      lastname: "Pedro",
-      firstname: "Cruz",
-      purpose: "Payment",
-      date: "03-20-31",
-    },
-    {
-      id: 3,
-      lastname: "Michell",
-      firstname: "Doe",
-      purpose: "Payment",
-      date: "01-20-11",
-    },
-    {
-      id: 4,
-      lastname: "Mitch",
-      firstname: "Doe",
-      purpose: "Payment",
-      date: "09-20-15",
-    },
-    {
-      id: 5,
-      lastname: "Angel",
-      firstname: "Wolf",
-      purpose: "Payment",
-      date: "04-20-19",
-    },
-    {
-      id: 6,
-      lastname: "Bucky",
-      firstname: "Black",
-      purpose: "Payment",
-      date: "11-20-30",
-    },
-  ]);
+
+  const [visitors, setVisitors] = useState(data);
 
   const history = useNavigate();
 
