@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import { CgTrash } from "react-icons/cg";
+import { BsPencilSquare } from "react-icons/bs";
 
 function Form() {
   const [lastname, setLastname] = useState("");
@@ -53,17 +53,6 @@ function Form() {
     },
   ]);
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = (id) => {
-    setShow(true);
-    // visitors.splice(index, 1);
-    // console.log("delete btn");
-    console.log(index);
-    history("/");
-  };
-
   const history = useNavigate();
 
   const addVisitor = () => {
@@ -79,7 +68,6 @@ function Form() {
   };
 
   const handleDelete = (id) => {
-    //getting the index of the visitor
     let index = visitors
       .map(function (e) {
         return e.id;
@@ -91,7 +79,9 @@ function Form() {
     console.log("delete btn");
     history("/");
   };
-  const handleEdit = (id) => {};
+  const handleEdit = () => {
+    alert("No edit functionality yet.");
+  };
 
   return (
     <div className="container m-4 p-2 d-flex justify-content-between">
@@ -171,9 +161,9 @@ function Form() {
                   <td>
                     <button
                       className="btn btn-sm bg-info m-1 w-100 text-white"
-                      onClick={() => handleEdit(visitor.id)}
+                      onClick={() => handleEdit()}
                     >
-                      edit
+                      <BsPencilSquare />
                     </button>
                   </td>
                   <td>
@@ -181,7 +171,7 @@ function Form() {
                       className="btn btn-sm bg-danger m-1 w-100 text-white"
                       onClick={() => handleDelete(visitor.id)}
                     >
-                      delete
+                      <CgTrash />
                     </button>
                   </td>
                 </tr>
